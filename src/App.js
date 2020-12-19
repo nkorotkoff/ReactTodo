@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-
+import React from 'react';
+import Input from './components/input/input';
+import Tasks from './components/tasks/tasks';
 function App() {
+  const [value,setValue] = React.useState();
+  const [tasks,setTasks] = React.useState([]);
+  const [stateButton,setStateButton]=React.useState('Add button');
+    const [pressedIndex,setPressedIndex]=React.useState();
+  console.log(tasks)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input setValue={setValue} value={value} setTasks={setTasks} tasks={tasks} stateButton={stateButton} pressedIndex={pressedIndex} setStateButton={setStateButton} setPressedIndex={setPressedIndex}/>
+      <Tasks tasks={tasks} setTasks={setTasks} setValue={setValue} setStateButton={setStateButton} setPressedIndex={setPressedIndex}/>
+      <button onClick={()=>{setTasks([])}}>Clear</button>
     </div>
   );
 }
